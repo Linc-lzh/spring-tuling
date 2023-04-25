@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+<!--
+ @Controller 标记在控制层的类注册为Bean组件
+ @Service    标记在业务逻辑层的类注册为Bean组件
+ @Repository 标记在数据访问层的类注册为Bean组件
+ @Component  标记非三层的普通的类注册为Bean组件
+
+  不是非要每个层对应相应的注解：1 增强可读性
+                               2 利于spring管理
+
+     怎么使用注解将一个类注册为Bean的步骤：
+     1.设置扫描包context:component-scan
+     2.在对应的类名加上对应的注解
+
+     使用上面注解会自动将类名的首字母小写设置为Bean的名字
+ -->
+   <!-- <bean class="cn.tulingxueyuan.controller.UserController" id="userController"></bean>-->
+
+
+    <!--扫描包
+    base-package 设置需要扫描的包
+           排除扫描:<context:exclude-filter 设置需要排除扫描的选项
+           包含扫描<context:include-filter  设置需要包含扫描的选项
+           type:   1.annotation  默认 根据注解的完整限定名设置排除\包括
+                   2.assignable       根据类的完整限定名设置排除\包括
+                   3.aspectj	org.example..*Service+	根据切面表达式设置排除\包括，一般不会使用
+                   4.regex	org\.example\.Default.*	  根据正则表达式设置包括\排除，一般不会使用
+                   5.custom	org.example.MyTypeFilter 根据接口org.springframework.core.type .TypeFilter设置排除\包括 ，一般不会使用
+   use-default-filters 默认true, 会默认包含扫描@Controller @Service @Repository @Component
+                           false,不会扫描@Controller @Service @Repository @Component
+    -->
+    <context:component-scan base-package="cn.tulingxueyuan" >
+       <!-- <context:include-filter type="assignable" expression="cn.tulingxueyuan.controller.UserController"/>-->
+        <!--<context:exclude-filter type="assignable" expression=""/>-->
+    </context:component-scan>
+
+    <!--引用外部属性资源文件   可以通过@Value来获取里面的key值-->
+    <context:property-placeholder location="db.properties"></context:property-placeholder>
+</beans>
