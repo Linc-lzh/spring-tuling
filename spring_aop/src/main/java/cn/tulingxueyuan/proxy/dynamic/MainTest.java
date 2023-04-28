@@ -26,7 +26,7 @@ public class MainTest {
            InvocationHandler h   委托执行的处理类 ：日志功能
         * */
         ICalculator proxy = (ICalculator) MainTest.createProxy(new Calculator());
-        proxy.div(1,0);
+        System.out.println(proxy.div(5,2));
     }
 
     /**
