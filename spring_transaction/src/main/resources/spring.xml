@@ -48,7 +48,7 @@
     </aop:config>
 
     <!--用来明确切点匹配到的方法哪些方法需要使用事务-->
-    <tx:advice>
+    <tx:advice id="advice">
         <tx:attributes>
             <!--可以使用通配符-->
             <tx:method name="add*"/>

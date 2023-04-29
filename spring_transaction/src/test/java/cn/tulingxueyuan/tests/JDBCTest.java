@@ -122,7 +122,7 @@ public class JDBCTest {
         // 数据库字段名和属性名一样 利用BeanPropertyRowMapper
         int result =
                 jdbcTemplate.update("update t_user set balance=balance+200 where id=?",
-                        7);
+                        2);
 
         System.out.println(result);
     }
@@ -135,7 +135,7 @@ public class JDBCTest {
         // 数据库字段名和属性名一样 利用BeanPropertyRowMapper
         int result =
                 jdbcTemplate.update("delete from t_user where id=?",
-                        7);
+                        2);
 
         System.out.println(result);
     }
